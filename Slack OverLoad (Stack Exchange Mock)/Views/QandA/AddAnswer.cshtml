@@ -1,0 +1,26 @@
+﻿@model Answers
+@{
+    ViewData["Title"] = "AddAnswer";
+}
+
+<h3>Answer Details</h3>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Question Id</th>
+        <th>UpVotes</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>@Model.username</td>
+            <td>@Model.detail</td>
+            <td>@Model.posted.ToShortDateString()</td>
+            <td>@Model.questionid</td>
+            <td>@Model.upvotes</td>
+            <td><a href="/qanda/" class="btn btn-success">Go Back!</a></td>
+        </tr>
+    </tbody>
+</table>
+<a href="/qanda/answersindex" class="btn btn-success">See all answers</a>

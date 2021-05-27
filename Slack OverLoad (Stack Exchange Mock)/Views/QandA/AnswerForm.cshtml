@@ -1,0 +1,36 @@
+﻿@model Questions
+@{
+    ViewData["Title"] = "AnswerForm";
+}
+
+<h1>Answer a Question...</h1>
+<h3>Question Details</h3>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Title</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>@Model.username</td>
+            <td>@Model.title</td>
+            <td>@Model.detail</td>
+            <td>@Model.posted.ToShortDateString()</td>
+            <td>@Model.category</td>
+            <td>@Model.status</td>
+            <td><a href="/qanda/" class="btn btn-success">Go Back!</a></td>
+        </tr>
+    </tbody>
+</table>
+<br/><br/>
+<form method="post" action="/qanda/addanswer">
+    Username: <input type="text" name="username" /><br />
+    Details: <input type="text" name="detail" /><br />
+    <input type="hidden" name="questionid" value="@Model.id" />
+    <input type="hidden" name="upvotes" value="0" />
+    <input type="submit" value="Save Answer" /><br />
+</form>

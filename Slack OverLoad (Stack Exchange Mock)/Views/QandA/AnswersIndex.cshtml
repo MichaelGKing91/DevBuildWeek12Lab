@@ -1,0 +1,35 @@
+﻿@model List<Answers>
+@{
+    ViewData["Title"] = "AnswersIndex";
+}
+
+<h1>AnswersIndex</h1>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Up Votes</th>
+
+    </tr>
+    <tbody>
+        @foreach (Answers cur in Model)
+        {
+        <tr>
+            <td>@cur.username</td>
+            <td>@cur.detail</td>
+            <td>@cur.posted.ToShortDateString()</td>
+            <td>@cur.upvotes</td>
+            <td><a href="/qanda/addupvote/@cur.id" class="btn btn-outline-info">Up Vote</a></td>
+            @if (DAL.currentuser == cur.username || DAL.currentuser.ToLower() == "admin")
+            {
+                <td><a href="/qanda/editanswerform/@cur.id" class="btn btn-warning">Edit</a></td>
+                <td><a href="/qanda/answerdeletewarning/@cur.id" class="btn btn-danger">Delete</a></td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/qanda/" class="btn btn-success">Go Back!</a>

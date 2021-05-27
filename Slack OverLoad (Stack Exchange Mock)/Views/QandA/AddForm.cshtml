@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "AddForm";
+}
+
+<h1>Ask a Question:</h1>
+<form method="post" action="/qanda/add">
+    Username: <input type="text" name="username" /><br />
+    Title: <input type="text" name="title" /><br />
+    Details: <input type="text" name="detail" /><br />
+    Category: <input type="text" name="category" /><br />
+    <input type="submit" value="Save" /><br />
+</form>
+<br/>
+<a href="/qanda/" class="btn btn-success">Go Back!</a>

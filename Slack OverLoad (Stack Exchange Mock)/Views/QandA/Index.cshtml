@@ -1,0 +1,53 @@
+﻿@model List<Questions>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Welcome @DAL.currentuser!</h2>
+<br/>
+<table>
+    <tr>
+        <td>
+            <form method="post" action="/qanda/SearchQuestion/">
+                Details: <input type="text" name="aString" /><input type="submit" value="Search" />
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+<table>
+    <tr>
+        <th></th>
+        <th>Username</th>
+        <th>Title</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+    <tbody>
+        @foreach (Questions cur in Model)
+        {
+        <tr>
+            <td><a href="/qanda/answerform/@cur.id" class="btn btn-dark">Answer it!</a></td>
+            <td>@cur.username</td>
+            <td>@cur.title</td>
+            <td>@cur.detail</td>
+            <td>@cur.posted.ToShortDateString()</td>
+            <td>@cur.category</td>
+            <td>@cur.status</td>
+            <td><a href="/qanda/answersbyquestionid/@cur.id" class="btn btn-outline-dark">Answers</a></td>
+            @if (DAL.currentuser == cur.username || DAL.currentuser.ToLower() == "admin")
+            {
+                <td><a href="/qanda/editform/@cur.id" class="btn btn-warning">Edit</a></td>
+                <td><a href="/qanda/questiondelete/@cur.id" class="btn btn-danger">Delete</a></td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+<a href="/qanda/addform" class="btn btn-success">Ask a Question</a>
+<a href="/qanda/answersindex" class="btn btn-success">See all answers</a>
+

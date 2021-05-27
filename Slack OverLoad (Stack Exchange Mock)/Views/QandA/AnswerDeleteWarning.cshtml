@@ -1,0 +1,26 @@
+﻿@model Answers
+@{
+    ViewData["Title"] = "AnswerDeleteWarning";
+}
+
+<h1>Are you sure you want to delete this answer?</h1>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Up Votes</th>
+
+    </tr>
+    <tbody>
+        <tr>
+            <td>@Model.username</td>
+            <td>@Model.detail</td>
+            <td>@Model.posted.ToShortDateString()</td>
+            <td>@Model.upvotes</td>
+            <td><a href="/qanda/answersindex" class="btn btn-success">Go Back!</a></td>
+            <td><a href="/qanda/deleteanswer/@Model.id" class="btn btn-danger">Delete</a></td>
+        </tr>
+        
+    </tbody>
+</table>

@@ -1,0 +1,28 @@
+﻿@model Questions
+@{
+    ViewData["Title"] = "QuestionDelete";
+}
+
+<h1>Are you sure you want to delete?</h1>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Title</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>@Model.username</td>
+            <td>@Model.title</td>
+            <td>@Model.detail</td>
+            <td>@Model.posted.ToShortDateString()</td>
+            <td>@Model.category</td>
+            <td>@Model.status</td>
+            <td><a href="/qanda/" class="btn btn-success">Go Back!</a></td>
+            <td><a href="/qanda/delete/@Model.id" class="btn btn-danger">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

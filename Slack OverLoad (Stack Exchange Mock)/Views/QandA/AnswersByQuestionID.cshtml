@@ -1,0 +1,54 @@
+﻿@model List<Answers>
+@{
+    ViewData["Title"] = "AnswersByQuestionID";
+}
+
+<h3>Question Details:</h3>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Title</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+    <tbody>
+        <tr>
+            <td>@ViewData["aQuestion.UserName"]</td>
+            <td>@ViewData["aQuestion.Title"]</td>
+            <td>@ViewData["aQuestion.Detail"]</td>
+            <td>@ViewData["aQuestion.Posted"]</td>
+            <td>@ViewData["aQuestion.Category"] </td>
+            <td>@ViewData["aQuestion.Status"] </td>
+            <td><a href="/qanda/" class="btn btn-success">Go Back!</a></td>
+        </tr>
+    </tbody>
+</table>
+<br />
+<br />
+<h3>All answers for this question:</h3>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Date Posted</th>
+        <th>Up Votes</th>
+    </tr>
+    <tbody>
+        @foreach (Answers cur in Model)
+        {
+        <tr>
+            <td>@cur.username</td>
+            <td>@cur.detail</td>
+            <td>@cur.posted.ToShortDateString()</td>
+            <td>@cur.upvotes</td>
+            <td><a href="/qanda/addupvotetoabyqid/@cur.id" class="btn btn-outline-info">Up Vote</a></td>
+            <td><a href="/qanda/editanswerform/@cur.id" class="btn btn-warning">Edit</a></td>
+            <td><a href="/qanda/answerdeletewarning/@cur.id" class="btn btn-danger">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
