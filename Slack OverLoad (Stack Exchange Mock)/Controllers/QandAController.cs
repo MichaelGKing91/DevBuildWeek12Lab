@@ -14,10 +14,10 @@ namespace Slack_OverLoad__Stack_Exchange_Mock_.Controllers
     {
         public IActionResult Index()
         {
-            //if (DAL.currentuser == null)
-            //{
-            //    Redirect("/home/index");
-            //}
+            if (DAL.currentuser == null)
+            {
+                return Redirect("/home/index");
+            }
             List<Questions> allQs = DAL.GetAllQs();
             return View(allQs);
         }
